@@ -10,12 +10,10 @@
       padding: 0;
       height: 100%;
       background: black;
-      overflow: hidden;
+      overflow: auto; /* permite scroll */
     }
     .video-container {
-      position: fixed;
-      top: 0;
-      left: 0;
+      position: relative; /* permite rolagem */
       width: 100vw;
       height: 100vh;
     }
@@ -49,17 +47,17 @@
 
   <script>
     const fullscreenBtn = document.getElementById('fullscreen-btn');
-    const videoFrame = document.getElementById('videoFrame');
 
     fullscreenBtn.addEventListener('click', () => {
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-      } else if (document.documentElement.mozRequestFullScreen) { // Firefox
-        document.documentElement.mozRequestFullScreen();
-      } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
-        document.documentElement.webkitRequestFullscreen();
-      } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
-        document.documentElement.msRequestFullscreen();
+      const el = document.documentElement;
+      if (el.requestFullscreen) {
+        el.requestFullscreen();
+      } else if (el.mozRequestFullScreen) {
+        el.mozRequestFullScreen();
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen();
+      } else if (el.msRequestFullscreen) {
+        el.msRequestFullscreen();
       }
     });
   </script>
