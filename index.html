@@ -24,15 +24,44 @@
       height: 100%;
       border: none;
     }
+    #fullscreen-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <div class="video-container">
     <iframe 
+      id="videoFrame"
       src="https://player.vimeo.com/video/1082737839?h=c26d20181b&autoplay=1&title=0&byline=0&portrait=0" 
       allow="autoplay; fullscreen; picture-in-picture"
       allowfullscreen>
     </iframe>
+    <button id="fullscreen-btn">Tela Cheia</button>
   </div>
+
+  <script>
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const videoFrame = document.getElementById('videoFrame');
+
+    fullscreenBtn.addEventListener('click', () => {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+        document.documentElement.mozRequestFullScreen();
+      } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+        document.documentElement.msRequestFullscreen();
+      }
+    });
+  </script>
 </body>
 </html>
