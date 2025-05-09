@@ -26,15 +26,50 @@
       height: 100%;
       border: none;
     }
+    #fullscreen-button {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: rgba(255, 255, 255, 0.6);
+      border: none;
+      font-size: 16px;
+      color: black;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #fullscreen-button:hover {
+      background-color: rgba(255, 255, 255, 0.9);
+    }
   </style>
 </head>
 <body>
   <div class="video-container">
     <iframe 
+      id="vimeo-iframe"
       src="https://player.vimeo.com/video/1082737839?h=c26d20181b&autoplay=1&title=0&byline=0&portrait=0" 
       allow="autoplay; fullscreen; picture-in-picture"
       allowfullscreen>
     </iframe>
+    <button id="fullscreen-button">🔲 Tela Cheia</button>
   </div>
+
+  <script>
+    const fullscreenButton = document.getElementById('fullscreen-button');
+    const iframe = document.getElementById('vimeo-iframe');
+
+    fullscreenButton.onclick = function () {
+      // Abre o vídeo em tela cheia nativa do navegador
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.mozRequestFullScreen) { // Firefox
+        iframe.mozRequestFullScreen();
+      } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) { // IE/Edge
+        iframe.msRequestFullscreen();
+      }
+    };
+  </script>
 </body>
 </html>
