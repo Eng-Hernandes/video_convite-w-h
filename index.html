@@ -10,14 +10,16 @@
       padding: 0;
       height: 100%;
       background: black;
-      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .video-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      position: relative;
+      width: 100%;
+      max-width: 100vw;
+      height: auto;
+      aspect-ratio: 16 / 9;
     }
     iframe {
       width: 100%;
@@ -36,4 +38,3 @@
   </div>
 </body>
 </html>
-
