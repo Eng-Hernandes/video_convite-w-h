@@ -10,10 +10,10 @@
       padding: 0;
       height: 100%;
       background: black;
-      overflow: auto; /* permite scroll */
+      overflow: auto; /* permite rolagem se necessário */
     }
     .video-container {
-      position: relative; /* permite rolagem */
+      position: relative;
       width: 100vw;
       height: 100vh;
     }
@@ -31,6 +31,7 @@
       color: white;
       border: none;
       cursor: pointer;
+      z-index: 999;
     }
   </style>
 </head>
@@ -47,17 +48,17 @@
 
   <script>
     const fullscreenBtn = document.getElementById('fullscreen-btn');
+    const videoFrame = document.getElementById('videoFrame');
 
     fullscreenBtn.addEventListener('click', () => {
-      const el = document.documentElement;
-      if (el.requestFullscreen) {
-        el.requestFullscreen();
-      } else if (el.mozRequestFullScreen) {
-        el.mozRequestFullScreen();
-      } else if (el.webkitRequestFullscreen) {
-        el.webkitRequestFullscreen();
-      } else if (el.msRequestFullscreen) {
-        el.msRequestFullscreen();
+      if (videoFrame.requestFullscreen) {
+        videoFrame.requestFullscreen();
+      } else if (videoFrame.mozRequestFullScreen) {
+        videoFrame.mozRequestFullScreen();
+      } else if (videoFrame.webkitRequestFullscreen) {
+        videoFrame.webkitRequestFullscreen();
+      } else if (videoFrame.msRequestFullscreen) {
+        videoFrame.msRequestFullscreen();
       }
     });
   </script>
